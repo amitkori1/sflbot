@@ -48,6 +48,13 @@ function buildCtx(sock, msg) {
 }
 
 async function processMessage(sock, msg) {
+    console.log('[DEBUG MESSAGE]', JSON.stringify({
+    type: msg.message ? Object.keys(msg.message) : [],
+    fromMe: msg.key?.fromMe,
+    jid: msg.key?.remoteJid,
+    text: H.getText(msg),
+    timestamp: msg.messageTimestamp?.toString?.() ?? msg.messageTimestamp
+}));
     if (!msg.message) return;
     const jid = msg.key.remoteJid;
     if (!jid || jid === 'status@broadcast' || jid.endsWith('@newsletter')) return;
