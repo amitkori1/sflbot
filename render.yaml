@@ -1,0 +1,17 @@
+# Exported from Render on 2026-10-25T21:45:12Z
+version: "1"
+projects:
+- name: Bot final
+  environments:
+  - name: 3bgm in
+    services:
+    - type: web
+      name: sflbot
+      runtime: docker
+      repo: https://github.com/amitkori1/sflbot
+      plan: free
+      region: oregon
+      healthCheckPath: /health
+      dockerContext: .
+      dockerfilePath: ./Dockerfile
+      autoDeployTrigger: commit
